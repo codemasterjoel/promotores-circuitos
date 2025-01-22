@@ -18,13 +18,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(ParroquiaSeeder::class);
-        $this->call(EjeSeeder::class);
-        $this->call(TipoSeeder::class);
-        $this->call(CategoriaSeeder::class);
-        $this->call(SubcategoriaSeeder::class);
-        $this->call(EstatusSeeder::class);
         $this->call(CircuitoSeeder::class);
-        $this->call(ConsultaSeeder::class);
 
     }
 }

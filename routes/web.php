@@ -18,6 +18,7 @@ use App\Http\Livewire\LaravelExamples\UserManagement;
 use App\Http\Livewire\PrimSeguConsulta\Index as PrimSeguConsulta;
 
 use App\Http\Livewire\Consulta\Index as consulta;
+use App\Http\Livewire\Promotor\Index as promotor;
 
 use Illuminate\Http\Request;
 
@@ -27,6 +28,7 @@ Route::get('/', function() {
 });
 Route::middleware('auth')->group(function(){
     Route::get('/consulta', consulta::class)->name('consulta');
+    Route::get('/promotores', promotor::class)->name('promotor');
     Route::get('/primseguconsulta', PrimSeguConsulta::class)->name('PrimSeguConsulta');
 });
 

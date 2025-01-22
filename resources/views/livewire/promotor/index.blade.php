@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 @if($modal)
-                    @include('livewire.consulta.crear')   
+                    @include('livewire.promotor.crear')   
                 @endif  
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
@@ -21,33 +21,26 @@
                                 <tr>
                                     <th class="text-uppercase text-dark font-weight-bolder">#</th>
                                     <th class="text-center text-uppercase text-dark font-weight-bolder">Parroquia</th>
-                                    <th class="text-center text-uppercase text-dark font-weight-bolder">Eje</th>
                                     <th class="text-center text-uppercase text-dark font-weight-bolder">Circuito</th>
-                                    <th class="text-center text-uppercase text-dark font-weight-bolder">Proyecto</th>
-                                    <th class="text-center text-uppercase text-dark font-weight-bolder">Tipo</th>
-                                    <th class="text-center text-uppercase text-dark font-weight-bolder">Categoría</th>
+                                    <th class="text-center text-uppercase text-dark font-weight-bolder">Codigo</th>
                                     <th class="text-center text-uppercase text-dark font-weight-bolder">acciones</th>
                                 </tr>
                             </thead>
-                            @if ($consultas->count())
+                            @if ($circuitos->count())
                                 <tbody>
                                     <?php $indice =0; ?>
-                                    @foreach ($consultas as $consulta)
+                                    @foreach ($circuitos as $circuito)
                                     <?php $indice += 1; ?>
                                     <tr>
                                         <td class="ps-4"><p class="font-weight-bold text-dark mb-0"><?php echo $indice; ?></p></td>
-                                        <td class="text-center text-uppercase"><p class="text-dark font-weight-bold mb-0">{{$consulta->parroquia->nombre}}</p></td>
-                                        <td class="text-center text-uppercase"><p class="text-dark font-weight-bold mb-0">{{$consulta->eje->nombre}}</p></td>
-                                        <td class="text-center text-uppercase"><p class="text-dark font-weight-bold mb-0">{{$consulta->circuito->nombre}}</p></td>
-                                        <td class="text-center text-uppercase"><p class="text-dark font-weight-bold mb-0">{{$consulta->nombre}}</p></td>
-                                        <td class="text-center text-uppercase"><p class="text-dark font-weight-bold mb-0 rounded-lg">{{$consulta->tipo->nombre}}</p></td>
-                                        <td class="text-center text-uppercase"><p class="text-dark font-weight-bold mb-0 rounded-lg">{{$consulta->categoria->nombre}}</p></td>
-                                        {{-- <td class="text-center text-uppercase"><p class=" font-weight-bold">{{$lsb->estatus ? 'activo' : 'inactivo'}}</p></td> --}}
-                                        <td class="text-center"><a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar lsb">
+                                        <td class="text-center text-uppercase"><p class="text-dark font-weight-bold mb-0">{{$circuito->parroquia->nombre}}</p></td>
+                                        <td class="text-center text-uppercase"><p class="text-dark font-weight-bold mb-0">{{$circuito->nombre}}</p></td>
+                                        <td class="text-center text-uppercase"><p class="text-dark font-weight-bold mb-0 rounded-lg">{{$circuito->codigo_comuna}}</p></td>
+                                        <td class="text-center text-uppercase"><a wire:click="editar({{$circuito->id}})" class=" text-success px-2 py-1 mb-0" type="button"><span class="material-symbols-outlined">person_edit</span></a></td>
+                                        {{-- <td class="text-center"><a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar lsb">
                                             <a wire:click="" rel="tooltip" title="Generar Ficha" type="button" class="text-warning font-bold py-2 px-2"><i class="material-icons">contact_page</i></a>
-                                            <a wire:click="" class=" text-success px-2 py-1 mb-0" type="button"><span class="material-symbols-outlined">person_edit</span></a>
                                             <a wire:click="" class="text-danger font-bold py-2 px-2"><span class="material-symbols-outlined">person_cancel</span></a>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -56,6 +49,9 @@
                             </table>
                         </div>
                     </div>
+                    <div class="card-footer">
+                        {{$circuitos->links()}}
+                   </div>
             </div>
         </div>
     </div>

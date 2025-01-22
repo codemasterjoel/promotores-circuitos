@@ -5,16 +5,6 @@ namespace App\Models {
     /**
      * App\Models\Categoria
      *
-     * @property \Illuminate\Support\Carbon|null $updated_at
-     * @property \Illuminate\Support\Carbon|null $created_at
-     * @property bigint(20) unsigned|null $tipo_id
-     * @property string $nombre
-     * @property int $id
-     * @method static \Illuminate\Database\Eloquent\Builder|Categoria whereId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Categoria whereNombre($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Categoria whereTipoId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Categoria whereCreatedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Categoria whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Categoria newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Categoria newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Categoria query()
@@ -254,10 +244,17 @@ namespace App\Models {
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property bigint(20) unsigned|null $parroquia_id
+     * @property string $codigo_comuna
+     * @property string $centro
+     * @property int(11) $codigo_centro
      * @property string $nombre
      * @property int $id
+     * @property-read \App\Models\Parroquia $parroquia
      * @method static \Illuminate\Database\Eloquent\Builder|Circuito whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Circuito whereNombre($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Circuito whereCodigoCentro($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Circuito whereCentro($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Circuito whereCodigoComuna($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Circuito whereParroquiaId($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Circuito whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Circuito whereUpdatedAt($value)
@@ -497,12 +494,6 @@ namespace App\Models {
     /**
      * App\Models\Consulta
      *
-     * @property \Illuminate\Support\Carbon|null $updated_at
-     * @property \Illuminate\Support\Carbon|null $created_at
-     * @property bigint(20) unsigned|null $circuito_id
-     * @property bigint(20) unsigned|null $eje_id
-     * @property bigint(20) unsigned|null $parroquia_id
-     * @property int $id
      * @property-read \App\Models\Parroquia $parroquia
      * @property-read \App\Models\Eje $eje
      * @property-read \App\Models\Circuito $circuito
@@ -510,12 +501,6 @@ namespace App\Models {
      * @property-read \App\Models\Tipo $tipo
      * @property-read \App\Models\Categoria $categoria
      * @property-read \App\Models\Subcategoria $subcategoria
-     * @method static \Illuminate\Database\Eloquent\Builder|Consulta whereId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Consulta whereParroquiaId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Consulta whereEjeId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Consulta whereCircuitoId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Consulta whereCreatedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Consulta whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Consulta newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Consulta newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Consulta query()
@@ -752,16 +737,6 @@ namespace App\Models {
     /**
      * App\Models\Eje
      *
-     * @property \Illuminate\Support\Carbon|null $updated_at
-     * @property \Illuminate\Support\Carbon|null $created_at
-     * @property bigint(20) unsigned|null $parroquia_id
-     * @property string $nombre
-     * @property int $id
-     * @method static \Illuminate\Database\Eloquent\Builder|Eje whereId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Eje whereNombre($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Eje whereParroquiaId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Eje whereCreatedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Eje whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Eje newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Eje newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Eje query()
@@ -998,14 +973,6 @@ namespace App\Models {
     /**
      * App\Models\Estatus
      *
-     * @property \Illuminate\Support\Carbon|null $updated_at
-     * @property \Illuminate\Support\Carbon|null $created_at
-     * @property string $nombre
-     * @property int $id
-     * @method static \Illuminate\Database\Eloquent\Builder|Estatus whereId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Estatus whereNombre($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Estatus whereCreatedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Estatus whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Estatus newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Estatus newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Estatus query()
@@ -1235,6 +1202,248 @@ namespace App\Models {
      * @mixin \Illuminate\Database\Query\Builder
      */
     class Estatus extends \Illuminate\Database\Eloquent\Model
+    {
+        //
+    }
+
+    /**
+     * App\Models\Mision
+     *
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property int $id
+     * @method static \Illuminate\Database\Eloquent\Builder|Mision whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Mision whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Mision whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Mision newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Mision newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Mision query()
+     * @method static mixed select($columns)
+     * @method static mixed selectSub($query, $as)
+     * @method static mixed selectRaw($expression, array $bindings)
+     * @method static mixed fromSub($query, $as)
+     * @method static mixed fromRaw($expression, $bindings)
+     * @method static mixed addSelect($column)
+     * @method static mixed distinct()
+     * @method static mixed from($table, $as)
+     * @method static mixed useIndex($index)
+     * @method static mixed forceIndex($index)
+     * @method static mixed ignoreIndex($index)
+     * @method static mixed join($table, $first, $operator, $second, $type, $where)
+     * @method static mixed joinWhere($table, $first, $operator, $second, $type)
+     * @method static mixed joinSub($query, $as, $first, $operator, $second, $type, $where)
+     * @method static mixed joinLateral($query, string $as, string $type)
+     * @method static mixed leftJoinLateral($query, string $as)
+     * @method static mixed leftJoin($table, $first, $operator, $second)
+     * @method static mixed leftJoinWhere($table, $first, $operator, $second)
+     * @method static mixed leftJoinSub($query, $as, $first, $operator, $second)
+     * @method static mixed rightJoin($table, $first, $operator, $second)
+     * @method static mixed rightJoinWhere($table, $first, $operator, $second)
+     * @method static mixed rightJoinSub($query, $as, $first, $operator, $second)
+     * @method static mixed crossJoin($table, $first, $operator, $second)
+     * @method static mixed crossJoinSub($query, $as)
+     * @method static mixed mergeWheres($wheres, $bindings)
+     * @method static mixed where($column, $operator, $value, $boolean)
+     * @method static mixed prepareValueAndOperator($value, $operator, $useDefault)
+     * @method static mixed orWhere($column, $operator, $value)
+     * @method static mixed whereNot($column, $operator, $value, $boolean)
+     * @method static mixed orWhereNot($column, $operator, $value)
+     * @method static mixed whereColumn($first, $operator, $second, $boolean)
+     * @method static mixed orWhereColumn($first, $operator, $second)
+     * @method static mixed whereRaw($sql, $bindings, $boolean)
+     * @method static mixed orWhereRaw($sql, $bindings)
+     * @method static mixed whereLike($column, $value, $caseSensitive, $boolean, $not)
+     * @method static mixed orWhereLike($column, $value, $caseSensitive)
+     * @method static mixed whereNotLike($column, $value, $caseSensitive, $boolean)
+     * @method static mixed orWhereNotLike($column, $value, $caseSensitive)
+     * @method static mixed whereIn($column, $values, $boolean, $not)
+     * @method static mixed orWhereIn($column, $values)
+     * @method static mixed whereNotIn($column, $values, $boolean)
+     * @method static mixed orWhereNotIn($column, $values)
+     * @method static mixed whereIntegerInRaw($column, $values, $boolean, $not)
+     * @method static mixed orWhereIntegerInRaw($column, $values)
+     * @method static mixed whereIntegerNotInRaw($column, $values, $boolean)
+     * @method static mixed orWhereIntegerNotInRaw($column, $values)
+     * @method static mixed whereNull($columns, $boolean, $not)
+     * @method static mixed orWhereNull($column)
+     * @method static mixed whereNotNull($columns, $boolean)
+     * @method static mixed whereBetween($column, iterable $values, $boolean, $not)
+     * @method static mixed whereBetweenColumns($column, array $values, $boolean, $not)
+     * @method static mixed orWhereBetween($column, iterable $values)
+     * @method static mixed orWhereBetweenColumns($column, array $values)
+     * @method static mixed whereNotBetween($column, iterable $values, $boolean)
+     * @method static mixed whereNotBetweenColumns($column, array $values, $boolean)
+     * @method static mixed orWhereNotBetween($column, iterable $values)
+     * @method static mixed orWhereNotBetweenColumns($column, array $values)
+     * @method static mixed orWhereNotNull($column)
+     * @method static mixed whereDate($column, $operator, $value, $boolean)
+     * @method static mixed orWhereDate($column, $operator, $value)
+     * @method static mixed whereTime($column, $operator, $value, $boolean)
+     * @method static mixed orWhereTime($column, $operator, $value)
+     * @method static mixed whereDay($column, $operator, $value, $boolean)
+     * @method static mixed orWhereDay($column, $operator, $value)
+     * @method static mixed whereMonth($column, $operator, $value, $boolean)
+     * @method static mixed orWhereMonth($column, $operator, $value)
+     * @method static mixed whereYear($column, $operator, $value, $boolean)
+     * @method static mixed orWhereYear($column, $operator, $value)
+     * @method static mixed whereNested(Closure $callback, $boolean)
+     * @method static mixed forNestedWhere()
+     * @method static mixed addNestedWhereQuery($query, $boolean)
+     * @method static mixed whereExists($callback, $boolean, $not)
+     * @method static mixed orWhereExists($callback, $not)
+     * @method static mixed whereNotExists($callback, $boolean)
+     * @method static mixed orWhereNotExists($callback)
+     * @method static mixed addWhereExistsQuery(self $query, $boolean, $not)
+     * @method static mixed whereRowValues($columns, $operator, $values, $boolean)
+     * @method static mixed orWhereRowValues($columns, $operator, $values)
+     * @method static mixed whereJsonContains($column, $value, $boolean, $not)
+     * @method static mixed orWhereJsonContains($column, $value)
+     * @method static mixed whereJsonDoesntContain($column, $value, $boolean)
+     * @method static mixed orWhereJsonDoesntContain($column, $value)
+     * @method static mixed whereJsonOverlaps($column, $value, $boolean, $not)
+     * @method static mixed orWhereJsonOverlaps($column, $value)
+     * @method static mixed whereJsonDoesntOverlap($column, $value, $boolean)
+     * @method static mixed orWhereJsonDoesntOverlap($column, $value)
+     * @method static mixed whereJsonContainsKey($column, $boolean, $not)
+     * @method static mixed orWhereJsonContainsKey($column)
+     * @method static mixed whereJsonDoesntContainKey($column, $boolean)
+     * @method static mixed orWhereJsonDoesntContainKey($column)
+     * @method static mixed whereJsonLength($column, $operator, $value, $boolean)
+     * @method static mixed orWhereJsonLength($column, $operator, $value)
+     * @method static mixed dynamicWhere($method, $parameters)
+     * @method static mixed whereFullText($columns, $value, array $options, $boolean)
+     * @method static mixed orWhereFullText($columns, $value, array $options)
+     * @method static mixed whereAll($columns, $operator, $value, $boolean)
+     * @method static mixed orWhereAll($columns, $operator, $value)
+     * @method static mixed whereAny($columns, $operator, $value, $boolean)
+     * @method static mixed orWhereAny($columns, $operator, $value)
+     * @method static mixed whereNone($columns, $operator, $value, $boolean)
+     * @method static mixed orWhereNone($columns, $operator, $value)
+     * @method static mixed groupBy($groups)
+     * @method static mixed groupByRaw($sql, array $bindings)
+     * @method static mixed having($column, $operator, $value, $boolean)
+     * @method static mixed orHaving($column, $operator, $value)
+     * @method static mixed havingNested(Closure $callback, $boolean)
+     * @method static mixed addNestedHavingQuery($query, $boolean)
+     * @method static mixed havingNull($columns, $boolean, $not)
+     * @method static mixed orHavingNull($column)
+     * @method static mixed havingNotNull($columns, $boolean)
+     * @method static mixed orHavingNotNull($column)
+     * @method static mixed havingBetween($column, iterable $values, $boolean, $not)
+     * @method static mixed havingRaw($sql, array $bindings, $boolean)
+     * @method static mixed orHavingRaw($sql, array $bindings)
+     * @method static mixed orderBy($column, $direction)
+     * @method static mixed orderByDesc($column)
+     * @method static mixed latest($column)
+     * @method static mixed oldest($column)
+     * @method static mixed inRandomOrder($seed)
+     * @method static mixed orderByRaw($sql, $bindings)
+     * @method static mixed skip($value)
+     * @method static mixed offset($value)
+     * @method static mixed take($value)
+     * @method static mixed limit($value)
+     * @method static mixed groupLimit($value, $column)
+     * @method static mixed forPage($page, $perPage)
+     * @method static mixed forPageBeforeId($perPage, $lastId, $column)
+     * @method static mixed forPageAfterId($perPage, $lastId, $column)
+     * @method static mixed reorder($column, $direction)
+     * @method static mixed union($query, $all)
+     * @method static mixed unionAll($query)
+     * @method static mixed lock($value)
+     * @method static mixed lockForUpdate()
+     * @method static mixed sharedLock()
+     * @method static mixed beforeQuery(callable $callback)
+     * @method static mixed applyBeforeQueryCallbacks()
+     * @method static mixed afterQuery(Closure $callback)
+     * @method static mixed applyAfterQueryCallbacks($result)
+     * @method static mixed toSql()
+     * @method static mixed toRawSql()
+     * @method static mixed find($id, $columns)
+     * @method static mixed findOr($id, $columns, Closure $callback)
+     * @method static mixed value($column)
+     * @method static mixed rawValue(string $expression, array $bindings)
+     * @method static mixed soleValue($column)
+     * @method static mixed get($columns)
+     * @method static mixed paginate($perPage, $columns, $pageName, $page, $total)
+     * @method static mixed simplePaginate($perPage, $columns, $pageName, $page)
+     * @method static mixed cursorPaginate($perPage, $columns, $cursorName, $cursor)
+     * @method static mixed getCountForPagination($columns)
+     * @method static mixed cursor()
+     * @method static mixed pluck($column, $key)
+     * @method static mixed implode($column, $glue)
+     * @method static mixed exists()
+     * @method static mixed doesntExist()
+     * @method static mixed existsOr(Closure $callback)
+     * @method static mixed doesntExistOr(Closure $callback)
+     * @method static mixed count($columns)
+     * @method static mixed min($column)
+     * @method static mixed max($column)
+     * @method static mixed sum($column)
+     * @method static mixed avg($column)
+     * @method static mixed average($column)
+     * @method static mixed aggregate($function, $columns)
+     * @method static mixed numericAggregate($function, $columns)
+     * @method static mixed insert(array $values)
+     * @method static mixed insertOrIgnore(array $values)
+     * @method static mixed insertGetId(array $values, $sequence)
+     * @method static mixed insertUsing(array $columns, $query)
+     * @method static mixed insertOrIgnoreUsing(array $columns, $query)
+     * @method static mixed update(array $values)
+     * @method static mixed updateFrom(array $values)
+     * @method static mixed updateOrInsert(array $attributes, callable|array $values)
+     * @method static mixed upsert(array $values, $uniqueBy, $update)
+     * @method static mixed increment($column, $amount, array $extra)
+     * @method static mixed incrementEach(array $columns, array $extra)
+     * @method static mixed decrement($column, $amount, array $extra)
+     * @method static mixed decrementEach(array $columns, array $extra)
+     * @method static mixed delete($id)
+     * @method static mixed truncate()
+     * @method static mixed newQuery()
+     * @method static mixed getColumns()
+     * @method static mixed raw($value)
+     * @method static mixed getBindings()
+     * @method static mixed getRawBindings()
+     * @method static mixed setBindings(array $bindings, $type)
+     * @method static mixed addBinding($value, $type)
+     * @method static mixed castBinding($value)
+     * @method static mixed mergeBindings(self $query)
+     * @method static mixed cleanBindings(array $bindings)
+     * @method static mixed getConnection()
+     * @method static mixed getProcessor()
+     * @method static mixed getGrammar()
+     * @method static mixed useWritePdo()
+     * @method static mixed clone()
+     * @method static mixed cloneWithout(array $properties)
+     * @method static mixed cloneWithoutBindings(array $except)
+     * @method static mixed dump($args)
+     * @method static mixed dumpRawSql()
+     * @method static mixed dd()
+     * @method static mixed ddRawSql()
+     * @method static mixed chunk($count, callable $callback)
+     * @method static mixed chunkMap(callable $callback, $count)
+     * @method static mixed each(callable $callback, $count)
+     * @method static mixed chunkById($count, callable $callback, $column, $alias)
+     * @method static mixed chunkByIdDesc($count, callable $callback, $column, $alias)
+     * @method static mixed orderedChunkById($count, callable $callback, $column, $alias, $descending)
+     * @method static mixed eachById(callable $callback, $count, $column, $alias)
+     * @method static mixed lazy($chunkSize)
+     * @method static mixed lazyById($chunkSize, $column, $alias)
+     * @method static mixed lazyByIdDesc($chunkSize, $column, $alias)
+     * @method static mixed first($columns)
+     * @method static mixed firstOrFail($columns, $message)
+     * @method static mixed sole($columns)
+     * @method static mixed tap($callback)
+     * @method static mixed when($value, callable $callback, callable $default)
+     * @method static mixed unless($value, callable $callback, callable $default)
+     * @method static mixed explain()
+     * @method static mixed macro($name, $macro)
+     * @method static mixed mixin($mixin, $replace)
+     * @method static mixed hasMacro($name)
+     * @method static mixed flushMacros()
+     * @method static mixed macroCall($method, $parameters)
+     * @mixin \Illuminate\Database\Query\Builder
+     */
+    class Mision extends \Illuminate\Database\Eloquent\Model
     {
         //
     }
@@ -1488,45 +1697,11 @@ namespace App\Models {
     /**
      * App\Models\PrimSeguConsulta
      *
-     * @property \Illuminate\Support\Carbon|null $updated_at
-     * @property \Illuminate\Support\Carbon|null $created_at
-     * @property string $codigoEnte
-     * @property string|null $ente
-     * @property bigint(20) unsigned|null $subcategoria_dos_id
-     * @property bigint(20) unsigned|null $categoria_dos_id
-     * @property bigint(20) unsigned|null $tipo_dos_id
-     * @property bigint(20) unsigned|null $estatus_dos_id
-     * @property string|null $proyecto_dos
-     * @property bigint(20) unsigned|null $subcategoria_uno_id
-     * @property bigint(20) unsigned|null $categoria_uno_id
-     * @property bigint(20) unsigned|null $tipo_uno_id
-     * @property bigint(20) unsigned|null $estatus_uno_id
-     * @property string|null $proyecto_uno
-     * @property string $circuito_id
-     * @property bigint(20) unsigned|null $parroquia_id
-     * @property int $id
      * @property-read \App\Models\Estatus $estatus
      * @property-read \App\Models\Tipo $tipo
      * @property-read \App\Models\Categoria $categoria
      * @property-read \App\Models\Subcategoria $subcategoria
      * @property-read \App\Models\Parroquia $parroquia
-     * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta whereId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta whereParroquiaId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta whereCircuitoId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta whereProyectoUno($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta whereEstatusUnoId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta whereTipoUnoId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta whereCategoriaUnoId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta whereSubcategoriaUnoId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta whereProyectoDos($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta whereEstatusDosId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta whereTipoDosId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta whereCategoriaDosId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta whereSubcategoriaDosId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta whereEnte($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta whereCodigoente($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta whereCreatedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|PrimSeguConsulta query()
@@ -1761,18 +1936,260 @@ namespace App\Models {
     }
 
     /**
-     * App\Models\Subcategoria
+     * App\Models\Promotores
      *
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
-     * @property bigint(20) unsigned|null $categoria_id
-     * @property string $nombre
+     * @property bigint(20) unsigned|null $mision_id
+     * @property bigint(20) unsigned|null $circuito_id
+     * @property string $telefono
+     * @property string $nombre_completo
+     * @property int(11) $cedula
      * @property int $id
-     * @method static \Illuminate\Database\Eloquent\Builder|Subcategoria whereId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Subcategoria whereNombre($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Subcategoria whereCategoriaId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Subcategoria whereCreatedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Subcategoria whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotores whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotores whereCedula($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotores whereNombreCompleto($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotores whereTelefono($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotores whereCircuitoId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotores whereMisionId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotores whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotores whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotores newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotores newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|Promotores query()
+     * @method static mixed select($columns)
+     * @method static mixed selectSub($query, $as)
+     * @method static mixed selectRaw($expression, array $bindings)
+     * @method static mixed fromSub($query, $as)
+     * @method static mixed fromRaw($expression, $bindings)
+     * @method static mixed addSelect($column)
+     * @method static mixed distinct()
+     * @method static mixed from($table, $as)
+     * @method static mixed useIndex($index)
+     * @method static mixed forceIndex($index)
+     * @method static mixed ignoreIndex($index)
+     * @method static mixed join($table, $first, $operator, $second, $type, $where)
+     * @method static mixed joinWhere($table, $first, $operator, $second, $type)
+     * @method static mixed joinSub($query, $as, $first, $operator, $second, $type, $where)
+     * @method static mixed joinLateral($query, string $as, string $type)
+     * @method static mixed leftJoinLateral($query, string $as)
+     * @method static mixed leftJoin($table, $first, $operator, $second)
+     * @method static mixed leftJoinWhere($table, $first, $operator, $second)
+     * @method static mixed leftJoinSub($query, $as, $first, $operator, $second)
+     * @method static mixed rightJoin($table, $first, $operator, $second)
+     * @method static mixed rightJoinWhere($table, $first, $operator, $second)
+     * @method static mixed rightJoinSub($query, $as, $first, $operator, $second)
+     * @method static mixed crossJoin($table, $first, $operator, $second)
+     * @method static mixed crossJoinSub($query, $as)
+     * @method static mixed mergeWheres($wheres, $bindings)
+     * @method static mixed where($column, $operator, $value, $boolean)
+     * @method static mixed prepareValueAndOperator($value, $operator, $useDefault)
+     * @method static mixed orWhere($column, $operator, $value)
+     * @method static mixed whereNot($column, $operator, $value, $boolean)
+     * @method static mixed orWhereNot($column, $operator, $value)
+     * @method static mixed whereColumn($first, $operator, $second, $boolean)
+     * @method static mixed orWhereColumn($first, $operator, $second)
+     * @method static mixed whereRaw($sql, $bindings, $boolean)
+     * @method static mixed orWhereRaw($sql, $bindings)
+     * @method static mixed whereLike($column, $value, $caseSensitive, $boolean, $not)
+     * @method static mixed orWhereLike($column, $value, $caseSensitive)
+     * @method static mixed whereNotLike($column, $value, $caseSensitive, $boolean)
+     * @method static mixed orWhereNotLike($column, $value, $caseSensitive)
+     * @method static mixed whereIn($column, $values, $boolean, $not)
+     * @method static mixed orWhereIn($column, $values)
+     * @method static mixed whereNotIn($column, $values, $boolean)
+     * @method static mixed orWhereNotIn($column, $values)
+     * @method static mixed whereIntegerInRaw($column, $values, $boolean, $not)
+     * @method static mixed orWhereIntegerInRaw($column, $values)
+     * @method static mixed whereIntegerNotInRaw($column, $values, $boolean)
+     * @method static mixed orWhereIntegerNotInRaw($column, $values)
+     * @method static mixed whereNull($columns, $boolean, $not)
+     * @method static mixed orWhereNull($column)
+     * @method static mixed whereNotNull($columns, $boolean)
+     * @method static mixed whereBetween($column, iterable $values, $boolean, $not)
+     * @method static mixed whereBetweenColumns($column, array $values, $boolean, $not)
+     * @method static mixed orWhereBetween($column, iterable $values)
+     * @method static mixed orWhereBetweenColumns($column, array $values)
+     * @method static mixed whereNotBetween($column, iterable $values, $boolean)
+     * @method static mixed whereNotBetweenColumns($column, array $values, $boolean)
+     * @method static mixed orWhereNotBetween($column, iterable $values)
+     * @method static mixed orWhereNotBetweenColumns($column, array $values)
+     * @method static mixed orWhereNotNull($column)
+     * @method static mixed whereDate($column, $operator, $value, $boolean)
+     * @method static mixed orWhereDate($column, $operator, $value)
+     * @method static mixed whereTime($column, $operator, $value, $boolean)
+     * @method static mixed orWhereTime($column, $operator, $value)
+     * @method static mixed whereDay($column, $operator, $value, $boolean)
+     * @method static mixed orWhereDay($column, $operator, $value)
+     * @method static mixed whereMonth($column, $operator, $value, $boolean)
+     * @method static mixed orWhereMonth($column, $operator, $value)
+     * @method static mixed whereYear($column, $operator, $value, $boolean)
+     * @method static mixed orWhereYear($column, $operator, $value)
+     * @method static mixed whereNested(Closure $callback, $boolean)
+     * @method static mixed forNestedWhere()
+     * @method static mixed addNestedWhereQuery($query, $boolean)
+     * @method static mixed whereExists($callback, $boolean, $not)
+     * @method static mixed orWhereExists($callback, $not)
+     * @method static mixed whereNotExists($callback, $boolean)
+     * @method static mixed orWhereNotExists($callback)
+     * @method static mixed addWhereExistsQuery(self $query, $boolean, $not)
+     * @method static mixed whereRowValues($columns, $operator, $values, $boolean)
+     * @method static mixed orWhereRowValues($columns, $operator, $values)
+     * @method static mixed whereJsonContains($column, $value, $boolean, $not)
+     * @method static mixed orWhereJsonContains($column, $value)
+     * @method static mixed whereJsonDoesntContain($column, $value, $boolean)
+     * @method static mixed orWhereJsonDoesntContain($column, $value)
+     * @method static mixed whereJsonOverlaps($column, $value, $boolean, $not)
+     * @method static mixed orWhereJsonOverlaps($column, $value)
+     * @method static mixed whereJsonDoesntOverlap($column, $value, $boolean)
+     * @method static mixed orWhereJsonDoesntOverlap($column, $value)
+     * @method static mixed whereJsonContainsKey($column, $boolean, $not)
+     * @method static mixed orWhereJsonContainsKey($column)
+     * @method static mixed whereJsonDoesntContainKey($column, $boolean)
+     * @method static mixed orWhereJsonDoesntContainKey($column)
+     * @method static mixed whereJsonLength($column, $operator, $value, $boolean)
+     * @method static mixed orWhereJsonLength($column, $operator, $value)
+     * @method static mixed dynamicWhere($method, $parameters)
+     * @method static mixed whereFullText($columns, $value, array $options, $boolean)
+     * @method static mixed orWhereFullText($columns, $value, array $options)
+     * @method static mixed whereAll($columns, $operator, $value, $boolean)
+     * @method static mixed orWhereAll($columns, $operator, $value)
+     * @method static mixed whereAny($columns, $operator, $value, $boolean)
+     * @method static mixed orWhereAny($columns, $operator, $value)
+     * @method static mixed whereNone($columns, $operator, $value, $boolean)
+     * @method static mixed orWhereNone($columns, $operator, $value)
+     * @method static mixed groupBy($groups)
+     * @method static mixed groupByRaw($sql, array $bindings)
+     * @method static mixed having($column, $operator, $value, $boolean)
+     * @method static mixed orHaving($column, $operator, $value)
+     * @method static mixed havingNested(Closure $callback, $boolean)
+     * @method static mixed addNestedHavingQuery($query, $boolean)
+     * @method static mixed havingNull($columns, $boolean, $not)
+     * @method static mixed orHavingNull($column)
+     * @method static mixed havingNotNull($columns, $boolean)
+     * @method static mixed orHavingNotNull($column)
+     * @method static mixed havingBetween($column, iterable $values, $boolean, $not)
+     * @method static mixed havingRaw($sql, array $bindings, $boolean)
+     * @method static mixed orHavingRaw($sql, array $bindings)
+     * @method static mixed orderBy($column, $direction)
+     * @method static mixed orderByDesc($column)
+     * @method static mixed latest($column)
+     * @method static mixed oldest($column)
+     * @method static mixed inRandomOrder($seed)
+     * @method static mixed orderByRaw($sql, $bindings)
+     * @method static mixed skip($value)
+     * @method static mixed offset($value)
+     * @method static mixed take($value)
+     * @method static mixed limit($value)
+     * @method static mixed groupLimit($value, $column)
+     * @method static mixed forPage($page, $perPage)
+     * @method static mixed forPageBeforeId($perPage, $lastId, $column)
+     * @method static mixed forPageAfterId($perPage, $lastId, $column)
+     * @method static mixed reorder($column, $direction)
+     * @method static mixed union($query, $all)
+     * @method static mixed unionAll($query)
+     * @method static mixed lock($value)
+     * @method static mixed lockForUpdate()
+     * @method static mixed sharedLock()
+     * @method static mixed beforeQuery(callable $callback)
+     * @method static mixed applyBeforeQueryCallbacks()
+     * @method static mixed afterQuery(Closure $callback)
+     * @method static mixed applyAfterQueryCallbacks($result)
+     * @method static mixed toSql()
+     * @method static mixed toRawSql()
+     * @method static mixed find($id, $columns)
+     * @method static mixed findOr($id, $columns, Closure $callback)
+     * @method static mixed value($column)
+     * @method static mixed rawValue(string $expression, array $bindings)
+     * @method static mixed soleValue($column)
+     * @method static mixed get($columns)
+     * @method static mixed paginate($perPage, $columns, $pageName, $page, $total)
+     * @method static mixed simplePaginate($perPage, $columns, $pageName, $page)
+     * @method static mixed cursorPaginate($perPage, $columns, $cursorName, $cursor)
+     * @method static mixed getCountForPagination($columns)
+     * @method static mixed cursor()
+     * @method static mixed pluck($column, $key)
+     * @method static mixed implode($column, $glue)
+     * @method static mixed exists()
+     * @method static mixed doesntExist()
+     * @method static mixed existsOr(Closure $callback)
+     * @method static mixed doesntExistOr(Closure $callback)
+     * @method static mixed count($columns)
+     * @method static mixed min($column)
+     * @method static mixed max($column)
+     * @method static mixed sum($column)
+     * @method static mixed avg($column)
+     * @method static mixed average($column)
+     * @method static mixed aggregate($function, $columns)
+     * @method static mixed numericAggregate($function, $columns)
+     * @method static mixed insert(array $values)
+     * @method static mixed insertOrIgnore(array $values)
+     * @method static mixed insertGetId(array $values, $sequence)
+     * @method static mixed insertUsing(array $columns, $query)
+     * @method static mixed insertOrIgnoreUsing(array $columns, $query)
+     * @method static mixed update(array $values)
+     * @method static mixed updateFrom(array $values)
+     * @method static mixed updateOrInsert(array $attributes, callable|array $values)
+     * @method static mixed upsert(array $values, $uniqueBy, $update)
+     * @method static mixed increment($column, $amount, array $extra)
+     * @method static mixed incrementEach(array $columns, array $extra)
+     * @method static mixed decrement($column, $amount, array $extra)
+     * @method static mixed decrementEach(array $columns, array $extra)
+     * @method static mixed delete($id)
+     * @method static mixed truncate()
+     * @method static mixed newQuery()
+     * @method static mixed getColumns()
+     * @method static mixed raw($value)
+     * @method static mixed getBindings()
+     * @method static mixed getRawBindings()
+     * @method static mixed setBindings(array $bindings, $type)
+     * @method static mixed addBinding($value, $type)
+     * @method static mixed castBinding($value)
+     * @method static mixed mergeBindings(self $query)
+     * @method static mixed cleanBindings(array $bindings)
+     * @method static mixed getConnection()
+     * @method static mixed getProcessor()
+     * @method static mixed getGrammar()
+     * @method static mixed useWritePdo()
+     * @method static mixed clone()
+     * @method static mixed cloneWithout(array $properties)
+     * @method static mixed cloneWithoutBindings(array $except)
+     * @method static mixed dump($args)
+     * @method static mixed dumpRawSql()
+     * @method static mixed dd()
+     * @method static mixed ddRawSql()
+     * @method static mixed chunk($count, callable $callback)
+     * @method static mixed chunkMap(callable $callback, $count)
+     * @method static mixed each(callable $callback, $count)
+     * @method static mixed chunkById($count, callable $callback, $column, $alias)
+     * @method static mixed chunkByIdDesc($count, callable $callback, $column, $alias)
+     * @method static mixed orderedChunkById($count, callable $callback, $column, $alias, $descending)
+     * @method static mixed eachById(callable $callback, $count, $column, $alias)
+     * @method static mixed lazy($chunkSize)
+     * @method static mixed lazyById($chunkSize, $column, $alias)
+     * @method static mixed lazyByIdDesc($chunkSize, $column, $alias)
+     * @method static mixed first($columns)
+     * @method static mixed firstOrFail($columns, $message)
+     * @method static mixed sole($columns)
+     * @method static mixed tap($callback)
+     * @method static mixed when($value, callable $callback, callable $default)
+     * @method static mixed unless($value, callable $callback, callable $default)
+     * @method static mixed explain()
+     * @method static mixed macro($name, $macro)
+     * @method static mixed mixin($mixin, $replace)
+     * @method static mixed hasMacro($name)
+     * @method static mixed flushMacros()
+     * @method static mixed macroCall($method, $parameters)
+     * @mixin \Illuminate\Database\Query\Builder
+     */
+    class Promotores extends \Illuminate\Database\Eloquent\Model
+    {
+        //
+    }
+
+    /**
+     * App\Models\Subcategoria
+     *
      * @method static \Illuminate\Database\Eloquent\Builder|Subcategoria newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Subcategoria newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Subcategoria query()
@@ -2009,14 +2426,6 @@ namespace App\Models {
     /**
      * App\Models\Tipo
      *
-     * @property \Illuminate\Support\Carbon|null $updated_at
-     * @property \Illuminate\Support\Carbon|null $created_at
-     * @property string $nombre
-     * @property int $id
-     * @method static \Illuminate\Database\Eloquent\Builder|Tipo whereId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Tipo whereNombre($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Tipo whereCreatedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Tipo whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Tipo newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Tipo newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Tipo query()

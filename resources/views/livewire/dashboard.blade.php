@@ -9,7 +9,6 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Circuitos</p>
                     <h5 class="font-weight-bolder mb-0">
-                      {{$circuitos->where('parroquia_id', '<', '20000')->count()}}
                     </h5>
                   </div>
                 </div>
@@ -30,7 +29,6 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Circuitos Cargados</p>
                     <h5 class="font-weight-bolder mb-0">
-                      {{$consultas->where('parroquia_id', '<', '20000')->count()}}
                     </h5>
                   </div>
                 </div>
@@ -51,7 +49,6 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Repite 1ra Consulta</p>
                     <h5 class="font-weight-bolder mb-0">
-                      {{$consultas->where('primera',1)->count()}}
                     </h5>
                   </div>
                 </div>
@@ -72,7 +69,6 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Repite 2da Segunda</p>
                     <h5 class="font-weight-bolder mb-0">
-                      {{$consultas->where('segunda',1)->count()}}
                     </h5>
                   </div>
                 </div>
@@ -674,10 +670,7 @@
     </div>
   </main>
 
-  <!--   Core JS Files   -->
-  {{-- <script src="/assets/js/plugins/chartjs.min.js"></script>
-  <script src="/assets/js/plugins/Chart.extension.js"></script> --}}
-  <script type="text/javascript">
+  {{-- <script type="text/javascript">
     var ctx2 = document.getElementById('myChart').getContext('2d');
     var myChart2 = new Chart(ctx2, {
         type: 'bar',
@@ -1025,4 +1018,4 @@
           }
         }
     });
-  </script>
+  </script> --}}

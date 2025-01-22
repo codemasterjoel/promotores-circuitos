@@ -19,11 +19,11 @@
             </li>
             {{-- PERFIL DE USUARIO --}}
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() == 'consulta' ? 'active' : '' }}" href="{{ route('consulta') }}">
+                    <a class="nav-link {{ Route::currentRouteName() == 'consulta' ? 'active' : '' }}" href="{{ route('promotor') }}">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <span class="material-icons {{ in_array(request()->route()->getName(),['consulta']) ? 'text-white' : 'text-dark' }}">account_box</span>
+                            <span class="material-icons {{ in_array(request()->route()->getName(),['promotor']) ? 'text-white' : 'text-dark' }}">account_box</span>
                         </div>
-                        <span class="nav-link-text ms-1"><b>3ra CONSULTA</b></span>
+                        <span class="nav-link-text ms-1"><b>PROMOTORES</b></span>
                     </a>
                 </li>
                 <li class="nav-item">
