@@ -16,9 +16,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@softui.com',
             'password' => Hash::make('secret')
         ]);
-
         $this->call(ParroquiaSeeder::class);
         $this->call(CircuitoSeeder::class);
-
+        $this->call(MisionSeeder::class);
     }
 }

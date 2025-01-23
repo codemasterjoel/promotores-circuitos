@@ -23,6 +23,9 @@ class CreateUsersTable extends Migration
             $table->string('location')->nullable();
             $table->text('about')->nullable();
             $table->rememberToken();
+            $table->boolean('is_admin')->default(false);
+            $table->foreignId('parroquia_id')->nullable()->references('id')->on('parroquias')->nullOnDelete()->cascadeOnUpdate();
+            $table->foreignId('mision_id')->nullable()->references('id')->on('misions')->nullOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

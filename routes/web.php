@@ -19,6 +19,7 @@ use App\Http\Livewire\PrimSeguConsulta\Index as PrimSeguConsulta;
 
 use App\Http\Livewire\Consulta\Index as consulta;
 use App\Http\Livewire\Promotor\Index as promotor;
+use App\Http\Livewire\Usuario\Index as usuario;
 
 use Illuminate\Http\Request;
 
@@ -46,6 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/billing', Billing::class)->name('billing');
     Route::get('/profile', Profile::class)->name('profile');
     Route::get('/tables', Tables::class)->name('tables');
+    Route::get('/usuario', usuario::class)->name('usuario');
     Route::get('/static-sign-in', StaticSignIn::class)->name('sign-in');
     Route::get('/static-sign-up', StaticSignUp::class)->name('static-sign-up');
     Route::get('/rtl', Rtl::class)->name('rtl');
