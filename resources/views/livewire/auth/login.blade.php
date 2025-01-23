@@ -4,6 +4,9 @@
             <div class="row">
                 <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
                     <div class="card card-plain mt-8">
+                        <div class="flex items-center justify-center">
+                            <img src="{{asset('img/logo consulta.png')}}" class="w-52">
+                        </div>
                         <div class="card-header pb-0 text-left bg-transparent">
                             <h1 class="text-info text-gradient">Iniciar Sesión</h1>
                         </div>

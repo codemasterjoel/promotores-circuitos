@@ -8,8 +8,16 @@ class Promotores extends Model
 {
     protected $fillable = [
         'cedula',
-        'nombre_completo',
+        'nombres',
+        'apellidos',
         'telefono',
+        'email',
+        'direccion',
+        'genero',
+        'fecha',
+        'edad',
+        'profesion',
         'circuito_id',
+
     ];
 }

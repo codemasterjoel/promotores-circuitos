@@ -11,8 +11,15 @@ return new class extends Migration
         Schema::create('promotores', function (Blueprint $table) {
             $table->id();
             $table->integer('cedula');
-            $table->string('nombre_completo');
+            $table->string('nombres');
+            $table->string('apellidos');
             $table->string('telefono');
+            $table->string('email');
+            $table->string('direccion');
+            $table->integer('genero');
+            $table->date('fecha');
+            $table->integer('edad');
+            $table->string('profesion');
             $table->foreignId('circuito_id')->nullable()->references('id')->on('circuitos')->nullOnDelete()->cascadeOnUpdate();
             $table->foreignId('mision_id')->nullable()->references('id')->on('misions')->nullOnDelete()->cascadeOnUpdate();
             $table->timestamps();
