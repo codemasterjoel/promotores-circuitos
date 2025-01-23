@@ -28,7 +28,7 @@ Route::get('/', function() {
 });
 Route::middleware('auth')->group(function(){
     Route::get('/consulta', consulta::class)->name('consulta');
-    Route::get('/promotores', promotor::class)->name('promotor');
+    Route::get('/promotores', promotor::class)->name('promotores');
     Route::get('/primseguconsulta', PrimSeguConsulta::class)->name('PrimSeguConsulta');
 });
 
