@@ -8,7 +8,7 @@
                 <div class="col-8">
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Circuitos</p>
-                    <h5 class="font-weight-bolder mb-0">
+                    <h5 class="font-weight-bolder mb-0">{{$circuitos->count()}}
                     </h5>
                   </div>
                 </div>
@@ -27,8 +27,8 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Circuitos Cargados</p>
-                    <h5 class="font-weight-bolder mb-0">
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Circuitos con Promotores</p>
+                    <h5 class="font-weight-bolder mb-0">{{$cargados}}
                     </h5>
                   </div>
                 </div>
@@ -47,8 +47,8 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Repite 1ra Consulta</p>
-                    <h5 class="font-weight-bolder mb-0">
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">MUJERES</p>
+                    <h5 class="font-weight-bolder mb-0"> {{$promotores->where('genero', 2)->count()}}
                     </h5>
                   </div>
                 </div>
@@ -67,8 +67,8 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Repite 2da Segunda</p>
-                    <h5 class="font-weight-bolder mb-0">
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">HOMBRES</p>
+                    <h5 class="font-weight-bolder mb-0">{{$promotores->where('genero', 1)->count()}}
                     </h5>
                   </div>
                 </div>
@@ -82,7 +82,7 @@
           </div>
         </div>
       </div>
-      <div class="row mt-4">
+      {{-- <div class="row mt-4">
         <div class="col-4">
           <div class="card">
             <div class="card-body p-3">
@@ -111,8 +111,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="row mt-4">
+      </div> --}}
+      {{-- <div class="row mt-4">
         <div class="col-lg-12 mb-lg-0 mb-4">
           <div class="card">
             <div class="card-body p-3">
@@ -127,8 +127,8 @@
             </div>
           </div>
         </div>
-      </div>      
-      <div class="row mt-4">
+      </div>       --}}
+      {{-- <div class="row mt-4">
         <div class="col-lg-12 mb-lg-0 mb-4">
           <div class="card">
             <div class="card-body p-3">
@@ -137,6 +137,39 @@
                 <div class="ms-auto text-center mt-5 mt-lg-0">
                   <div class=" border-radius-lg h-100">
                     <canvas id="myChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> --}}
+      <div class="row mt-4">
+        <div class="col-lg-12 mb-lg-0 mb-4">
+          <div class="card">
+            <div class="card-body p-3">
+              <h5 class=" font-bold">PROMOTORES POR CIRCUITO</h5>
+              <div class="row">
+                <div class="ms-auto text-center mt-5 mt-lg-0">
+                  <div class=" border-radius-lg h-100">
+                    <table class="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th>PARROQUIA</th>
+                          <th>CIRCUITO</th>
+                          <th>PROMOTORES</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach ($promotoresxcircuito as $promotor)
+                          <tr>
+                            <td>{{$promotor->parroquias}}</td>
+                            <td>{{$promotor->circuito}}</td>
+                            <td>{{$promotor->promotores}}</td>
+                          </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
