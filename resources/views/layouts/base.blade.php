@@ -12,7 +12,8 @@
     <!-- Fonts and icons
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />     -->
     <!-- Nucleo Icons -->
-    <script src="{{asset('css/3.4.4.css')}}"></script>
+    <script src="{{asset('css/3.4.4.css')}}" rel="stylesheet"></script>
+    <link herf="{{asset('css/3.4.4.css')}}" rel="stylesheet"/>
     <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <link href="{{asset('css/material-icons.css')}}" rel="stylesheet"/>
