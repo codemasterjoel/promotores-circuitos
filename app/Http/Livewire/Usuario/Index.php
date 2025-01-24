@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\User;
 use App\Models\Parroquia;
 use App\Models\Mision;
+use App\Models\Nivel;
 
 use Livewire\WithPagination;
 
@@ -18,15 +19,16 @@ class Index extends Component
     public $search = "";
     public $id = null;
     public $parroquias  = null; // Lista de parroquias
-    public $misiones = null; //Areas
+    public $misiones, $niveles = null; //Areas
     public $name = null; //usuario
     public $email = null; //Correo
     public $password = null; //Contrasena
-    public $parroquiaId, $misionId = null; //Id que recibo de los campos
+    public $parroquiaId, $misionId, $nivelId = null; //Id que recibo de los campos
 
     public function render()
     {
         $this->misiones = Mision::all();
+        $this->niveles = Nivel::all();
         $usuarios = User::query()->paginate(5);
         return view('livewire.usuario.index', ['usuarios' => $usuarios]);
     }
@@ -107,22 +109,17 @@ class Index extends Component
         $this->parroquiaId = null;
         $this->password = null;
     }
-    public function updatedEstadoId($id)
+    public function updatedNivelId($id)
     {
-        $this->municipioId = null;
-        $this->parroquiaId = null;
-        $this->municipios = Municipio::where('estado_id', $id)->get();
-    }
-    public function updatedMunicipioId($id)
-    {
-        $this->parroquiaId = null;
-        $this->parroquias = Parroquia::where('municipio_id', $id)->get();
-    }
-    public function updatedNivelId()
-    {
-        $this->estadoId = null;
-        $this->municipioId = null;
-        $this->parroquiaId = null;
+        if ($id == 3)
+        {
+            $this->parroquiaId = null;
+            $this->parroquias = Parroquia::where('parroquia_id', '<', '20000')->get();
+        }else
+        {
+            $this->parroquiaId = null;
+            $this->parroquias = null;
+        }
     }
     public function borrar($id)
     {

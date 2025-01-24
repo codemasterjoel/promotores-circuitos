@@ -18,6 +18,6 @@ class Promotores extends Model
         'edad',
         'profesion',
         'circuito_id',
-
+        'mision_id',
     ];
 }

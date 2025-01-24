@@ -17,7 +17,7 @@
             <div class="min-h-screen flex justify-center">
                 <div class="p-4 w-full bg-white rounded-lg">
                     <div class="flex justify-center">
-                        <img src="{{asset('img/logo.svg')}}" class="w-52">
+                        <img src="{{asset('img/logo consulta.png')}}" class="w-52">
                     </div>
                     <h3 class="text-2xl text-cyan-400 font-semibold text-center pb-4">REGISTRO DE USUARIOS</h3>
                     <form>
@@ -40,11 +40,11 @@
                         <div class="flex items-center justify-center pb-4"> {{-- campo Area --}}
                             <div class="w-full rounded-lg bg-red-500 text-white">
                                 <div class="flex">
-                                    <span class="bg-cyan-900 p-2 rounded-tl-lg rounded-bl-lg text-white font-bold ">Àrea de Trabajo</span>
+                                    <span class="bg-cyan-900 p-2 rounded-tl-lg rounded-bl-lg text-white font-bold ">Misiones</span>
                                     <select class="block w-[1px] min-w-0 px-4 flex-auto py-2 border rounded-r-lg text-gray-900 font-bold focus:outline-none focus:ring-2 focus:ring-cyan-500" wire:model="areaId" required>
                                         <option value="">Seleccione</option>
-                                        @foreach( $areas as $area )
-                                            <option value="{{ $area->id }}">{{ $area->nombre }}</option>
+                                        @foreach( $misiones as $mision )
+                                            <option value="{{ $mision->id }}">{{ $mision->nombre }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -53,43 +53,7 @@
                                 @enderror
                             </div>
                         </div>
-                        @if ($nivelId > 1)
-                            <div class="flex items-center justify-center pb-4"> {{-- campo estado --}}
-                                <div class="w-full rounded-lg bg-red-500 text-white">
-                                    <div class="flex">
-                                        <span class="bg-cyan-900 p-2 flex rounded-tl-lg rounded-bl-lg text-white font-bold ">Estado estado</span>
-                                        <select class=" flex-auto block w-[1px] min-w-0 px-4 py-2 border rounded-r-lg text-gray-900 font-bold focus:outline-none focus:ring-2 focus:ring-cyan-500" wire:model.live="estadoId" required>
-                                            <option value="">Seleccione</option>
-                                            @foreach( $estados as $estado )
-                                                <option value="{{ $estado->id }}">{{ $estado->nombre }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    @error('estadoId')
-                                        {{$message}}
-                                    @enderror
-                                </div>
-                            </div>
-                        @endif
-                        @if (!is_null($municipios) and $nivelId > 2) {{-- campo municipio --}}
-                            <div class="flex items-center justify-center pb-4"> {{-- campo estado --}}
-                                <div class="w-full rounded-lg bg-red-500 text-white">
-                                    <div class="flex">
-                                        <span class="bg-cyan-900 p-2 rounded-tl-lg rounded-bl-lg text-white font-bold ">Municipio</span>
-                                        <select class="w-full px-4 py-2 border rounded-r-lg text-gray-900 font-bold focus:outline-none focus:ring-2 focus:ring-cyan-500" wire:model.live="municipioId" required>
-                                            <option value="">Seleccione</option>
-                                            @foreach( $municipios as $municipio )
-                                                <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    @error('municipioId')
-                                        {{$message}}
-                                    @enderror
-                                </div>
-                            </div>
-                        @endif
-                        @if (!is_null($parroquias) and $nivelId == 4) {{-- campo Parroquia --}}
+                        @if (!is_null($parroquias) and $nivelId == 3) {{-- campo Parroquia --}}
                             <div class="flex items-center justify-center pb-4"> {{-- campo estado --}}
                                 <div class="w-full rounded-lg bg-red-500 text-white">
                                     <div class="flex">

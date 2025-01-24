@@ -27,7 +27,8 @@ class Index extends Component
     {
         $this->limpiardatos();
         $circuito = circuito::findOrFail($id);
-        $this->promotores = promotor::where('circuito_id', $id)->get();
+        $this->promotores = promotor::where('circuito_id', $id)
+                                    ->where('mision_id', auth()->user()->mision_id)->get();
 
         $this->circuito_id = $id;
         $this->nombre = $circuito->nombre;
@@ -60,6 +61,7 @@ class Index extends Component
                 'edad' => $this->edad,
                 'profesion' => $this->profesion,
                 'circuito_id' => $this->circuito_id,
+                'mision_id' => Auth()->user()->mision_id,
         ]);
          
          session()->flash('promotorGuardado', 'success');

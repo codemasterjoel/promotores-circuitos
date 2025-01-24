@@ -23,8 +23,8 @@
                                     <tr>
                                         <th class="text-uppercase text-secondary text-dark font-weight-bolder">#</th>
                                         <th class="text-center text-uppercase text-secondary text-dark font-weight-bolder">nombre</th>
-                                        <th class="text-center text-uppercase text-secondary text-dark font-weight-bolder">nivel</th>
-                                        <th class="text-center text-uppercase text-secondary text-dark font-weight-bolder">estado</th>
+                                        <th class="text-center text-uppercase text-secondary text-dark font-weight-bolder">Misión</th>
+                                        <th class="text-center text-uppercase text-secondary text-dark font-weight-bolder">parroquia</th>
                                         <th class="text-center text-uppercase text-secondary text-dark font-weight-bolder">acciones</th>
                                     </tr>
                                 </thead>
@@ -34,11 +34,10 @@
                                     <?php $indice += 1; ?>
                                     <tr><td class="ps-4"><p class=" font-weight-bold mb-0"><?php echo $indice; ?></p></td>
                                         <td class="text-center text-uppercase"><p class=" font-weight-bold mb-0">{{$usuario->name ? $usuario->name : ''}}</p></td>
-                                        <td class="text-center text-uppercase"><p class=" font-weight-bold mb-0">{{$usuario->nivel->nombre}}</p></td>
-                                        <td class="text-center text-uppercase"><p class=" font-weight-bold mb-0">{{$usuario->estado->nombre}}</p></td>
+                                        <td class="text-center text-uppercase"><p class=" font-weight-bold mb-0">{{isset($usuario->mision->nombre) ? $usuario->mision->nombre : ''}}</p></td>
+                                        <td class="text-center text-uppercase"><p class=" font-weight-bold mb-0">{{isset($usuario->parroquia->nombre) ? $usuario->parroquia->nombre : ''}}</p></td>
                                         <td class="text-center"><a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar usuario">
                                             <a wire:click="editar('{{$usuario->id}}')" class=" text-success px-2 py-1 mb-0" type="button"><span class="material-symbols-outlined">person_edit</span></a>
-                                            {{-- <button wire:click="editar({{$usuario->id}})" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4">Editar</button> --}}
                                             <a wire:click="borrar('{{$usuario->id}}')" class=" text-danger font-bold py-2 px-4"><span class="material-symbols-outlined">person_cancel</span></a>
                                         </td>
                                     </tr>

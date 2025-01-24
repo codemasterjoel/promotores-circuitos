@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->boolean('is_admin')->default(false);
             $table->foreignId('parroquia_id')->nullable()->references('id')->on('parroquias')->nullOnDelete()->cascadeOnUpdate();
             $table->foreignId('mision_id')->nullable()->references('id')->on('misions')->nullOnDelete()->cascadeOnUpdate();
+            $table->foreignId('nivel_id')->nullable()->references('id')->on('nivels')->nullOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }
