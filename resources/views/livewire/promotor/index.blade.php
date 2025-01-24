@@ -36,11 +36,11 @@
                                         <td class="text-center text-uppercase"><p class="text-dark font-weight-bold mb-0">{{$circuito->parroquia->nombre}}</p></td>
                                         <td class="text-center text-uppercase"><p class="text-dark font-weight-bold mb-0">{{$circuito->nombre}}</p></td>
                                         <td class="text-center text-uppercase"><p class="text-dark font-weight-bold mb-0 rounded-lg">{{$circuito->codigo_comuna}}</p></td>
-                                        <td class="text-center text-uppercase"><a wire:click="editar({{$circuito->id}})" class=" text-success px-2 py-1 mb-0" type="button"><span class="material-symbols-outlined">person_edit</span></a></td>
-                                        {{-- <td class="text-center"><a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar lsb">
-                                            <a wire:click="" rel="tooltip" title="Generar Ficha" type="button" class="text-warning font-bold py-2 px-2"><i class="material-icons">contact_page</i></a>
-                                            <a wire:click="" class="text-danger font-bold py-2 px-2"><span class="material-symbols-outlined">person_cancel</span></a>
-                                        </td> --}}
+                                        @if (auth()->user()->nivel_id <> 3)
+                                            <td class="text-center text-uppercase"><a wire:click="editar({{$circuito->id}})" class=" text-success px-2 py-1 mb-0" type="button"><span class="material-symbols-outlined">person_edit</span></a></td>
+                                        @else
+                                        <td></td>
+                                        @endif
                                     </tr>
                                     @endforeach
                                 </tbody>
