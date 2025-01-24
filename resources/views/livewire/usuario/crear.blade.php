@@ -25,7 +25,7 @@
                             <div class="w-full rounded-lg bg-red-500 text-white">
                                 <div class="flex">
                                     <span class="bg-cyan-900 p-2 rounded-tl-lg rounded-bl-lg text-white font-semibold ">Nivel de Usuario</span>
-                                    <select class="block w-[1px] min-w-0 px-4 flex-auto py-2 border rounded-r-lg text-gray-900 font-bold focus:outline-none focus:ring-2 focus:ring-cyan-500" wire:model.live="nivelId" required>
+                                    <select class="block w-[1px] min-w-0 px-4 flex-auto py-2 border rounded-r-lg text-gray-900 font-bold focus:outline-none focus:ring-2 focus:ring-cyan-500" wire:model.live="nivel_id" required>
                                         <option value="">Seleccione</option>
                                         @foreach( $niveles as $nivel )
                                             <option value="{{ $nivel->id }}">{{ $nivel->nombre }}</option>
@@ -41,7 +41,7 @@
                             <div class="w-full rounded-lg bg-red-500 text-white">
                                 <div class="flex">
                                     <span class="bg-cyan-900 p-2 rounded-tl-lg rounded-bl-lg text-white font-bold ">Misiones</span>
-                                    <select class="block w-[1px] min-w-0 px-4 flex-auto py-2 border rounded-r-lg text-gray-900 font-bold focus:outline-none focus:ring-2 focus:ring-cyan-500" wire:model="areaId" required>
+                                    <select class="block w-[1px] min-w-0 px-4 flex-auto py-2 border rounded-r-lg text-gray-900 font-bold focus:outline-none focus:ring-2 focus:ring-cyan-500" wire:model="mision_id" required>
                                         <option value="">Seleccione</option>
                                         @foreach( $misiones as $mision )
                                             <option value="{{ $mision->id }}">{{ $mision->nombre }}</option>
@@ -53,12 +53,12 @@
                                 @enderror
                             </div>
                         </div>
-                        @if (!is_null($parroquias) and $nivelId == 3) {{-- campo Parroquia --}}
+                        @if (!is_null($parroquias) and $nivel_id == 3) {{-- campo Parroquia --}}
                             <div class="flex items-center justify-center pb-4"> {{-- campo estado --}}
                                 <div class="w-full rounded-lg bg-red-500 text-white">
                                     <div class="flex">
                                         <span class="bg-cyan-900 p-2 rounded-tl-lg rounded-bl-lg text-white font-bold ">Parroquia</span>
-                                        <select class="w-full px-4 py-2 border rounded-r-lg text-gray-900 focus:outline-none font-bold focus:ring-2 focus:ring-cyan-500" wire:model.live="parroquiaId" required>
+                                        <select class="w-full px-4 py-2 border rounded-r-lg text-gray-900 focus:outline-none font-bold focus:ring-2 focus:ring-cyan-500" wire:model.live="parroquia_id" required>
                                             <option value="">Seleccione</option>
                                             @foreach( $parroquias as $parroquia )
                                             <option value="{{ $parroquia->id }}">{{ $parroquia->nombre }}</option>

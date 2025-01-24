@@ -23,13 +23,13 @@ class Index extends Component
     public $name = null; //usuario
     public $email = null; //Correo
     public $password = null; //Contrasena
-    public $parroquiaId, $misionId, $nivelId = null; //Id que recibo de los campos
+    public $parroquia_id, $mision_id, $nivel_id = null; //Id que recibo de los campos
 
     public function render()
     {
         $this->misiones = Mision::all();
         $this->niveles = Nivel::all();
-        $usuarios = User::query()->paginate(5);
+        $usuarios = User::where('is_admin', 0)->paginate(5);
         return view('livewire.usuario.index', ['usuarios' => $usuarios]);
     }
     public function crear()
@@ -40,6 +40,7 @@ class Index extends Component
     }
     public function abrirModal() 
     {
+        $this->limpiarCampos();
         $this->modal = true;
     }
     public function cerrarModal() 
@@ -57,11 +58,9 @@ class Index extends Component
         $this->id = $id;
         $this->name = $usuario->name;
         $this->email = $usuario->email;
-        $this->areaId = $usuario->area_id;
-        $this->nivelId = $usuario->nivel_id;
-        $this->estadoId = $usuario->estado_id;
-        $this->municipioId = $usuario->municipio_id;
-        $this->parroquiaId = $usuario->parroquia_id;
+        $this->mision_id = $usuario->mision_id;
+        $this->nivel_id = $usuario->nivel_id;
+        $this->parroquia_id = $usuario->parroquia_id;
         $this->password = $usuario->password;
 
         $this->modal = true;
@@ -69,9 +68,9 @@ class Index extends Component
     }
     public function guardar()
     {
-        if ($this->nivelId = 1) {
-            $this->estadoId = 25;
-        }
+        // if ($this->nivelId = 1) {
+        //     $this->estadoId = 25;
+        // }
         if ($this->showPassword) {
             $this->password = bcrypt($this->password);
         }
@@ -81,11 +80,9 @@ class Index extends Component
             'name' => $this->name,
             'email' => $this->email,
             'password' => $this->password,
-            'area_id' => $this->areaId,
-            'nivel_id' => $this->nivelId,
-            'estado_id' => $this->estadoId,
-            'municipio_id' => $this->municipioId,
-            'parroquia_id' => $this->parroquiaId,
+            'nivel_id' => $this->nivel_id,
+            'mision_id' => $this->mision_id,
+            'parroquia_id' => $this->parroquia_id,
         ]);
      
         session()->flash('success', 'success');
@@ -102,11 +99,9 @@ class Index extends Component
     {
         $this->name = null;
         $this->email = null;
-        $this->areaId = null;
-        $this->nivelId = null;
-        $this->estadoId = null;
-        $this->municipioId = null;
-        $this->parroquiaId = null;
+        $this->mision_id = null;
+        $this->nivel_id = null;
+        $this->parroquia_id = null;
         $this->password = null;
     }
     public function updatedNivelId($id)

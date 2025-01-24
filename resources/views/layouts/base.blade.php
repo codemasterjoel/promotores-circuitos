@@ -30,7 +30,7 @@
     <script src="{{ asset('js/chart.min.js')}}"></script>
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
-    <script src="{{ asset('css/tailwind.css')}}"></script>
+    {{-- <script src="{{ asset('css/tailwind.css')}}"></script> --}}
     <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1" rel="stylesheet" />
     @livewireStyles
 </head>
