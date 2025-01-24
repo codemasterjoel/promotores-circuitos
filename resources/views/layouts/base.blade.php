@@ -12,8 +12,10 @@
     <!-- Fonts and icons
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />     -->
     <!-- Nucleo Icons -->
-    <script src="{{asset('css/3.4.4.css')}}" rel="stylesheet"></script>
-    <link herf="{{asset('css/3.4.4.css')}}" rel="stylesheet"/>
+    <!--script src="{{asset('css/3.4.4.css')}}" rel="stylesheet"></script-->
+    <!--link rel="stylesheet" type="text/css" href="{{asset('css/3.4.4.css')}}"/-->
+    <!--script src="https://unpkg.com/@tailwindcss/browser@4"></script-->
+    <script src="https://cdn.tailwindcss.com/" ></script>
     <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <link href="{{asset('css/material-icons.css')}}" rel="stylesheet"/>
@@ -30,7 +32,7 @@
     <script src="{{ asset('js/chart.min.js')}}"></script>
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
-    {{-- <script src="{{ asset('css/tailwind.css')}}"></script> --}}
+    <script src="{{ asset('css/tailwind.css')}}"></script>
     <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1" rel="stylesheet" />
     @livewireStyles
 </head>
