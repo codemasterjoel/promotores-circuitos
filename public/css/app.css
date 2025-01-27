@@ -134,6 +134,20 @@
 6. Use the user's configured `sans` font-variation-settings by default.
 7. Disable tap highlights on iOS
 */
+.g-sidenav-show:not(.rtl) .sidenav {
+  transition: transform 0.3s ease-in-out; /* Añade una transición suave */
+  transform: translateX(-17.125rem); /* Menú oculto por defecto en pantallas pequeñas */
+}
+
+.g-sidenav-show:not(.rtl) .sidenav.show { /* Clase para mostrar el menú */
+  transform: translateX(0); /* Menú visible */
+}
+
+@media (min-width: 1200px) { /*Para que el menú se vea en pantallas grandes */
+  .g-sidenav-show:not(.rtl) .sidenav {
+      transform: translateX(0);
+  }
+}
 
 html,
 :host {

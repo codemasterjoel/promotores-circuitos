@@ -12,7 +12,7 @@
     <!-- Fonts and icons
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />     -->
     <!-- Nucleo Icons -->
-    <!--script src="{{asset('css/3.4.4.css')}}" rel="stylesheet"></script-->
+    {{-- <!--script src="{{asset('css/3.4.4.css')}}" rel="stylesheet"></script--> --}}
     <!--link rel="stylesheet" type="text/css" href="{{asset('css/3.4.4.css')}}"/-->
     <!--script src="https://unpkg.com/@tailwindcss/browser@4"></script-->
     <script src="https://cdn.tailwindcss.com/" ></script>
@@ -49,7 +49,7 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/jquerygoogle.min.js') }}"></script>
     <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script-->
-    <script>
+    {{-- <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
             var options = {
@@ -57,13 +57,14 @@
             }
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
-    </script>
+        </script> --}}
     <!-- Github buttons
-    <script async defer src="https://buttons.github.io/buttons.js"></script> -->
-    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <!-- <script src="{{ asset('assets/js/soft-ui-dashboard.js')}}"></script> -->
-    <script src="{{ asset('js/jquery.mask.min.js')}}"></script>
-    <script src="{{asset('js/tailmater.js')}}"></script>
+        <script async defer src="https://buttons.github.io/buttons.js"></script> -->
+        <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+        <!-- <script src="{{ asset('assets/js/soft-ui-dashboard.js')}}"></script> -->
+        <script src="{{ asset('js/jquery.mask.min.js')}}"></script>
+        <script src="{{asset('js/tailmater.js')}}"></script>
+        <script src="{{ asset('js/querys.js') }}"></script>
     @livewireScripts
 </body>
 

@@ -26,7 +26,7 @@ class Login extends Component
     public function login() {
         $user = User::where('email', '=', $this->email)->first();
         
-        if($user->count() > 0){
+        if(isset($user)){
             if($user->email == $this->email and password_verify($this->password, $user->password)) 
             {
                 auth()->login($user, $this->remember_me);
@@ -38,7 +38,7 @@ class Login extends Component
             }
         }
         else {
-            
+            return $this->addError('email', trans('auth.failed')); 
         }
     }
 
